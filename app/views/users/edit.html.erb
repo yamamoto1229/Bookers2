@@ -1,0 +1,27 @@
+<h1>User info</h1>
+<!-- form_for部分 -->
+<%= form_for(@user) do |f| %>
+　　　<% if @user.errors.any? %>
+ 　　　　 <div class="alert alert-warning">
+          <h2 ><%= @user.errors.count %>errors prohibited this obj from being saved:</h2>
+    　　　　<ul>
+      　　　 <% @user.errors.full_messages.each do |message| %>
+        　　　<li><%= message %></li>
+      　　　 <% end %>
+   　　 　　</ul>
+  　　　  </div>
+　　　<% end %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.attachment_field :profile_image %>
+  </div>
+  <div class="field">
+    <%= f.label :introduction %><br />
+    <%= f.text_area :introduction, autofocus: true %>
+  </div>
+  <div><%= f.submit 'Update User' %></div>
+<% end %>
